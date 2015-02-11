@@ -12,9 +12,7 @@ Includes the following:
 - [Image optimization](https://www.npmjs.com/package/gulp-imagemin)
 - Error handling in the console [and in Notification Center](https://github.com/mikaelbr/gulp-notify)
 - Shimming non common-js vendor code with other dependencies (like a jQuery plugin)
-- Multiple bundles with shared dependencies
-- Separate compression task for production builds
-- Icon Font generation
+- Separate minification task for production builds
 
 
 TO use:
@@ -30,10 +28,10 @@ npm install
 gulp
 ```
 
-This will run the `default` gulp task defined in `gulp/tasks/default.js`, which has the following task dependencies: `['sass', 'images', 'markup', 'watch']`
+This will run the `default` gulp task defined in `gulp/tasks/default.js`, which has the following task dependencies: `['sass', 'images', 'html', 'watch']`
 - The `sass` task compiles your css files.
 - `images` moves images copies images from a source folder, performs optimizations, the outputs them into the build folder
-- `markup` doesn't do anything in dev, but minifies HTML for production
+- `html` doesn't do anything in dev, but minifies HTML for production
 - `watch` has `watchify` as a dependency, which will run the browserifyTask with a `devMode` flag that enables sourcemaps and watchify, a browserify add-on that enables caching for super fast recompiling. The task itself starts watching source files and will re-run the appropriate tasks when those files change.
 
 ### Configuration
@@ -46,5 +44,5 @@ There is also a `production` task you can run:
 ```
 gulp production
 ```
-This will run JavaScript tests, then re-build optimized, compressed css and js files to the build folder, as well as output their file sizes to the console. It's a shortcut for running the following tasks: `images`, `minifyHTML`, `minifyCss`, `uglifyJs`.
+This will run JavaScript tests, then re-build optimized, compressed css and js files to the build folder, as well as output their file sizes to the console. It's a shortcut for running the following tasks: `images`, `minify-html`, `minify-css`, `uglifyJs`.
 
