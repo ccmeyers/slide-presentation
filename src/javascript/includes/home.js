@@ -7,17 +7,17 @@ Backbone.$ = $;
 
 module.exports = Backbone.View.extend({
 
-    el: $('.home'),
+    el: $('.yourParentElement'),
 
     events: {
-        "click .link": "open",
+        "click .link": "yourFunction",
     },
 
     initialize: function() {
         this.render();
     },
 
-    open: function() {
+    yourFunction: function() {
         $('body').css({
             'background-color': 'gray',
             'color': 'white'
