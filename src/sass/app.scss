@@ -1,0 +1,15 @@
+@import "bourbon";
+@import "neat";
+
+@import "includes/mixins";
+
+body
+{
+    @include font-base;
+    transition: color 300ms, background-color 300ms;
+}
+
+.wrapper
+{
+    @include row;
+}
