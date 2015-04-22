@@ -31,6 +31,7 @@ module.exports = {
     dest: dest + '/assets/images'
   },
   html: {
+    process: true,
     src: src + '/html/**',
     dest: dest
   },

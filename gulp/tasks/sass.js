@@ -1,5 +1,6 @@
 var gulp         = require('gulp');
 var browserSync  = require('browser-sync');
+var livereload   = require('gulp-livereload');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var handleErrors = require('../util/handleErrors');
@@ -18,5 +19,6 @@ gulp.task('sass', function ()
     // .pipe(sourcemaps.write())
     .pipe(autoprefixer({ browsers: ['last 2 version'] }))
     .pipe(gulp.dest(config.dest))
-    .pipe(browserSync.reload({stream:true}));
+    // .pipe(browserSync.reload({stream:true}));
+    .pipe(livereload())
 });

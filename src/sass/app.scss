@@ -2,14 +2,7 @@
 @import "neat";
 
 @import "includes/mixins";
+@import "include/fonts";
+@import "includes/reset";
 
-body
-{
-    @include font-base;
-    transition: color 300ms, background-color 300ms;
-}
-
-.wrapper
-{
-    @include row;
-}
+@import "includes/base";

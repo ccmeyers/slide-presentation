@@ -33,5 +33,5 @@ gulp.task('minify-html', ['html'], function()
 
 gulp.task('production', function()
 {
-  gulp.start(['images', 'minify-html', 'minify-css', 'uglify-js'])
+  gulp.start(['images', 'minify-css', 'uglify-js'])
 });
