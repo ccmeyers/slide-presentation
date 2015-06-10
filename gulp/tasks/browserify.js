@@ -9,7 +9,6 @@
 */
 
 var browserify   = require('browserify');
-var browserSync  = require('browser-sync');
 var livereload   = require('gulp-livereload');
 var watchify     = require('watchify');
 var bundleLogger = require('../util/bundleLogger');

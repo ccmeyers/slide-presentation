@@ -1,9 +1,8 @@
 var gulp = require('gulp');
 var config = require('../config').html;
-var browserSync  = require('browser-sync');
 var livereload = require('gulp-livereload');
 
-gulp.task('html', function() 
+gulp.task('html', function()
 {
 
   if (config.process == true)
@@ -21,5 +20,5 @@ gulp.task('html', function()
 	    // .pipe(browserSync.reload({stream:true}));
 	    .pipe(livereload())
   }
-  
+
 });

@@ -1,5 +1,5 @@
 // any external vars needed for config
-var neat = require('node-neat').includePaths; 
+var neat = require('node-neat').includePaths;
 
 
 // global base src and dest
@@ -7,12 +7,6 @@ var dest = './dist';
 var src = './src';
 
 module.exports = {
-  browserSync: {
-    server: {
-      // Serve up our build folder
-      baseDir: dest
-    }
-  },
   sass: {
     src: src + '/sass/*.{sass,scss}',
     dest: dest + '/assets/css',
@@ -20,7 +14,7 @@ module.exports = {
       imagePath: 'images', // Used by the image-url helper
       includePaths: neat,
       sourceComments: 'map'
-    }, 
+    },
     sourcemaps: {
       includeContent: false,
       sourceRoot: src
