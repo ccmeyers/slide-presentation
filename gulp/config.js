@@ -7,8 +7,15 @@ var dest = './dist';
 var src = './src';
 
 module.exports = {
+  browserSync: {
+    server: {
+      // Serve up our build folder
+      baseDir: dest
+    }
+  },
   sass: {
     src: src + '/sass/*.{sass,scss}',
+    srcWatch: src + '/sass/**/*.{sass,scss}',
     dest: dest + '/assets/css',
     settings: {
       imagePath: 'images', // Used by the image-url helper
@@ -25,8 +32,7 @@ module.exports = {
     dest: dest + '/assets/images'
   },
   html: {
-    process: true,
-    src: src + '/html/**',
+    src: src + '/html/*.html',
     dest: dest
   },
   browserify: {
@@ -35,9 +41,7 @@ module.exports = {
     bundleConfigs: [{
       entries: src + '/javascript/app.js',
       dest: dest + '/assets/js',
-      outputName: 'app.js',
-      // list of externally available modules to exclude from the bundle
-      external: ['jquery', 'underscore']
+      outputName: 'app.js'
     }]
   },
   production: {

@@ -39,6 +39,27 @@ var browserifyTask = function(callback, devMode) {
       bundleLogger.start(bundleConfig.outputName);
 
       return b
+        // .transform('hbsfy')
+        .transform('debowerify')
+        .bundle()
+        // Report compile errors
+        .on('error', handleErrors)
+        // Use vinyl-source-stream to make the
+        // stream gulp compatible. Specify the
+        // desired output filename here.
+        .pipe(source(bundleConfig.outputName))
+        // Specify the output destination
+        .pipe(gulp.dest(bundleConfig.dest))
+        .on('end', reportFinished)
+        // .pipe(browserSync.reload({stream:true}));
+        .pipe(livereload())
+    };
+
+    var update = function() {
+      // Log when bundling starts
+      bundleLogger.start(bundleConfig.outputName);
+
+      return b
         .bundle()
         // Report compile errors
         .on('error', handleErrors)
@@ -57,7 +78,7 @@ var browserifyTask = function(callback, devMode) {
       // Wrap with watchify and rebundle on changes
       b = watchify(b);
       // Rebundle on update
-      b.on('update', bundle);
+      b.on('update', update);
       bundleLogger.watch(bundleConfig.outputName);
     } else {
       // Sort out shared dependencies.
