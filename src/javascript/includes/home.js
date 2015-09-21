@@ -7,21 +7,22 @@ Backbone.$ = $;
 
 module.exports = Backbone.View.extend({
 
-    el: $('.yourParentElement'),
+    el: $('body'),
 
     events: {
-        "click .link": "yourFunction",
+        "keydown body": "jump",
     },
 
     initialize: function() {
         this.render();
     },
 
-    yourFunction: function() {
-        $('body').css({
-            'background-color': 'gray',
-            'color': 'white'
-        });
+    jump: function(e) {
+      e.preventDefault();
+      console.log('e.keyCode', e.keyCode);
+      if (e.keyCode === 32) {
+        console.log('jump!');
+      }
     },
 
     render: function() {

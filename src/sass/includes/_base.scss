@@ -4,4 +4,15 @@ body {
   .row {
     @include row;
   }
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .view-height {
+    height: calc(100vh - 103px);
+  }
 }

@@ -16,13 +16,8 @@
   .good {
     position: relative;
     @include span-columns(6);
-    height: calc(100vh - 103px);
 
     .content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       width: 80%;
 
       .chart-container {
@@ -75,7 +70,7 @@
             left: 56.25px;
             transform: translate(-50%, -50%);
             font-size: 26px;
-            color: #808083;
+            color: $gray;
           }
         }
       }
@@ -83,7 +78,7 @@
 
     .stat {
       font-size: 30px;
-      color: #808083;
+      color: $gray;
       margin-top: 35px;
       margin-bottom: 10px;
       @include t-med;
@@ -103,15 +98,10 @@
   .money {
     position: relative;
     @include span-columns(6);
-    height: calc(100vh - 103px);
     background-color: $black;
     color: $off-white;
 
     .content {
-      position: absolute;
-      top: 48%;
-      left: 50%;
-      transform: translate(-50%, -48%);
       width: 85%;
 
       .stat {
