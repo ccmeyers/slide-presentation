@@ -3,10 +3,29 @@
   -webkit-font-smoothing: antialiased;
 }
 
-
 @mixin font-base {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    @include font-smoothing;
+  font-family: 'Theinhardt-Reg', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  @include font-smoothing;
+}
+
+@mixin t-reg {
+  font-family: 'Theinhardt-Reg', Arial, sans-serif;
+}
+
+@mixin t-med {
+  font-family: 'Theinhardt-Med', Arial, sans-serif;
+}
+
+@mixin t-heavy {
+  font-family: 'Theinhardt-Heavy', Arial, sans-serif;
+}
+
+@mixin t-bold {
+  font-family: 'Theinhardt-Bold', Arial, sans-serif;
+}
+
+@mixin t-black {
+  font-family: 'Theinhardt-Black', Arial, sans-serif;
 }

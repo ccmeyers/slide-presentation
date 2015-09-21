@@ -1,10 +1,10 @@
 {
-  "name": "red-antler-conduit",
+  "name": "aera",
   "version": "1.0.0",
-  "description": "The conduit to a great front-end project.",
+  "description": "",
   "repository": {
     "type": "git",
-    "url": "git://git.redantler.com/redantler/conduit.git"
+    "url": "git://git.redantler.com/redantler/aera.git"
   },
   "browserify": {
     "transform": [

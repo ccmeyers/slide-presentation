@@ -1,7 +1,5 @@
-RED ANTLER CONDUIT
+Aera
 ==================
-
-Start your front-end project here. This is a base Gulp + Browserify + Backbone starting point for a front-end build. It is based on many hours of research, trial and error and a combination of different Gulp setups from around the web. 
 
 Includes the following:
 
@@ -35,14 +33,13 @@ This will run the `default` gulp task defined in `gulp/tasks/default.js`, which 
 - `watch` has `watchify` as a dependency, which will run the browserifyTask with a `devMode` flag that enables sourcemaps and watchify, a browserify add-on that enables caching for super fast recompiling. The task itself starts watching source files and will re-run the appropriate tasks when those files change.
 
 ### Configuration
-All paths and plugin settings have been abstracted into a centralized config object in `gulp/config.js`. Adapt the paths and settings to the structure and needs of the project. 
+All paths and plugin settings have been abstracted into a centralized config object in `gulp/config.js`. Adapt the paths and settings to the structure and needs of the project.
 
 
 #### Production files
 
-There is also a `production` task you can run: 
+There is also a `production` task you can run:
 ```
 gulp production
 ```
 This will run JavaScript tests, then re-build optimized, compressed css and js files to the build folder, as well as output their file sizes to the console. It's a shortcut for running the following tasks: `images`, `minify-html`, `minify-css`, `uglifyJs`.
-

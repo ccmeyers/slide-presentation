@@ -1,0 +1,132 @@
+.good-money {
+
+  .header {
+    @include t-med;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 45px;
+  }
+
+  .num {
+    text-transform: uppercase;
+    display: inline-block;
+    @include t-black;
+  }
+
+  .good {
+    position: relative;
+    @include span-columns(6);
+    height: calc(100vh - 103px);
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+
+      .chart-container {
+        position: relative;
+        height: 225px;
+        width: 225px;
+        margin: 0 auto;
+
+        .chart-bg {
+          position: absolute;
+          background-color: $blue;
+          width: 225px;
+          height: 225px;
+          border-radius: 50%;
+          border: 1px solid #ececec;
+        }
+
+        .chart-slice {
+          position: absolute;
+          width: 225px;
+          height: 225px;
+          border-radius: 50%;
+          clip: rect(0px, 225px, 225px, 112.5px);
+          transform: rotate(283deg);
+
+          .chart {
+            background-color: #cfd1d2;
+            position: absolute;
+            width: 225px;
+            height: 225px;
+            border-radius: 50%;
+            clip: rect(0px, 112.5px, 225px, 0px);
+            transform: rotate(77deg);
+          }
+        }
+
+        .chart-middle {
+          position: absolute;
+          top: 56.25px;
+          left: 56.25px;
+          height: 112.5px;
+          width: 112.5px;
+          border-radius: 50%;
+          background-color: $off-white;
+
+          .text {
+            @include t-bold;
+            position: absolute;
+            top: 56.25px;
+            left: 56.25px;
+            transform: translate(-50%, -50%);
+            font-size: 26px;
+            color: #808083;
+          }
+        }
+      }
+    }
+
+    .stat {
+      font-size: 30px;
+      color: #808083;
+      margin-top: 35px;
+      margin-bottom: 10px;
+      @include t-med;
+
+      .num {
+        @include t-heavy;
+      }
+    }
+
+    .source {
+      @include t-med;
+      font-size: 20px;
+      color: $blue;
+    }
+  }
+
+  .money {
+    position: relative;
+    @include span-columns(6);
+    height: calc(100vh - 103px);
+    background-color: $black;
+    color: $off-white;
+
+    .content {
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -48%);
+      width: 85%;
+
+      .stat {
+        @include t-bold;
+        font-size: 30px;
+        color: $off-white;
+        margin-bottom: 5px;
+      }
+
+      .source {
+        @include t-med;
+        font-size: 20px;
+        color: $blue;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}

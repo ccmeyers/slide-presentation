@@ -1,0 +1,52 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $black;
+  padding: 25px 0;
+  z-index: 100;
+
+  .navigation {
+    @include outer-container(90%);
+
+    .links {
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .link {
+        display: inline-block;
+        @include span-columns(4);
+        @include t-reg;
+
+        &.home {
+          font-size: 40px;
+          margin-top: 6px;
+        }
+
+        &.logo {
+          height: 53px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-image: url(../images/logo-white.png);
+          background-image: url(../images/logo-white.svg);
+          text-indent: -9999px;
+
+          a {
+            height: 53px;
+            width: 56px;
+          }
+        }
+
+        &.contact {
+          text-align: right;
+          font-size: 25px;
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+}
