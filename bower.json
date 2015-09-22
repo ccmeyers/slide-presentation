@@ -12,5 +12,8 @@
     "src/javascript/vendor",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "waypoints": "~4.0.0"
+  }
 }
