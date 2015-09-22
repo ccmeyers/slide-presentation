@@ -1,0 +1,27 @@
+.shift-two {
+  position: relative;
+  background-color: $black;
+
+  .content {
+    width: 75%;
+    @include t-med;
+
+    h1 {
+      color: $blue;
+      font-size: 50px;
+      margin-bottom: 50px;
+    }
+
+    ul {
+      padding-left: 85px;
+      list-style: disc;
+      color: $off-white;
+      font-size: 30px;
+      line-height: 1.1;
+
+      li {
+        margin-bottom: 25px;
+      }
+    }
+  }
+}
