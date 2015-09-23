@@ -1,0 +1,100 @@
+.companies {
+
+  .left {
+    position: relative;
+    @include span-columns(6);
+    background-color: $black;
+    color: $off-white;
+
+    .content {
+      width: 80%;
+      @include t-med;
+      font-size: 40px;
+    }
+  }
+
+  .right {
+    position: relative;
+    @include span-columns(6);
+
+    .header {
+      padding-top: 24%;
+
+      li {
+        display: inline-block;
+        height: 102px;
+        @include span-columns(4);
+        background-position: center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+
+        &.company-one {
+          background-image: url(../images/etsy.png);
+          @include transition(background-image 0.25s ease-in-out);
+
+          &:hover,
+          &.active {
+            background-image: url(../images/etsy-hover.png);
+          }
+        }
+
+        &.company-two {
+          background-image: url(../images/warby-parker.png);
+          @include transition(background-image 0.25s ease-in-out);
+
+          &:hover,
+          &.active {
+            background-image: url(../images/warby-parker-hover.png);
+          }
+        }
+
+        &.company-three {
+          background-image: url(../images/honest-co.png);
+          @include transition(background-image 0.25s ease-in-out);
+
+          &:hover,
+          &.active {
+            background-image: url(../images/honest-co-hover.png);
+          }
+        }
+      }
+
+    }
+
+    .content {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      width: 80%;
+      @include t-med;
+      color: $gray;
+
+      .company {
+        display: none;
+
+        &.active {
+          display: block;
+        }
+
+        .name {
+          @include t-heavy;
+          font-size: 50px;
+        }
+
+        .mission {
+          font-size: 30px;
+          margin: 20px 0;
+
+          span {
+            @include t-heavy;
+          }
+        }
+
+        .money {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}

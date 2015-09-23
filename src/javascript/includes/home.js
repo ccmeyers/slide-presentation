@@ -18,31 +18,97 @@ module.exports = Backbone.View.extend({
     initialize: function() {
         this.getCurrentPanel();
         this.slider();
+        this.companiesActivate();
     },
 
     slider: function(e) {
       var that = this;
       $(document).on('keydown', function(e){
+        var $currentPanel = $('.currentPanel');
         if (e.keyCode === 40 || e.keyCode === 32 || e.keyCode === 13) {
           e.preventDefault();
-          var nextPanel = $('.currentPanel').nextAll('section');
-          if (nextPanel.length > 0) {
-            that.scrollToElement(nextPanel);
+          if ( !($currentPanel.hasClass('section5')) ) {
+            that.findNext();
+          } else {
+            if ($currentPanel.hasClass('first') || $currentPanel.hasClass('second')) {
+              that.fragmentedPanelDown();
+            } else {
+              that.findNext();
+            }
           }
         } else if (e.keyCode === 38) {
           e.preventDefault();
-          var prevPanel = $('.currentPanel').prevAll('section');
-          if (prevPanel.length > 0) {
-            that.scrollToElement(prevPanel);
+          if ( !($currentPanel.hasClass('section5')) ) {
+            that.findPrev();
+          } else {
+            if ($currentPanel.hasClass('second') || $currentPanel.hasClass('third')) {
+              that.fragmentedPanelUp();
+            } else {
+              that.findPrev();
+            }
           }
         }
-      })
+      });
     },
 
     scrollToElement: function(panel) {
       $('html, body').animate({
         scrollTop: panel.offset().top - 103
       }, 200);
+    },
+
+    findNext: function() {
+      var that = this;
+      var $currentPanel = $('.currentPanel');
+      var nextPanel = $currentPanel.nextAll('section');
+      if (nextPanel.length > 0) {
+        that.scrollToElement(nextPanel);
+      }
+    },
+
+    findPrev: function() {
+      var that = this;
+      var $currentPanel = $('.currentPanel');
+      var prevPanel = $currentPanel.prevAll('section');
+      if (prevPanel.length > 0) {
+        that.scrollToElement(prevPanel);
+      }
+    },
+
+    fragmentedPanelDown: function() {
+      var that = this;
+      $section5 = $('.section5');
+      if ($section5.hasClass('first')) {
+        $('li.active').removeClass('active');
+        $('.company-two').addClass('active');
+        $('.company.active').hide().removeClass('active');
+        $('.company:eq(1)').fadeIn().addClass('active');
+        $section5.removeClass('first').addClass('second');
+      } else if ($section5.hasClass('second')) {
+        $('li.active').removeClass('active');
+        $('.company-three').addClass('active');
+        $('.company.active').hide().removeClass('active');
+        $('.company:eq(2)').fadeIn().addClass('active');
+        $section5.removeClass('second').addClass('third');
+      }
+    },
+
+    fragmentedPanelUp: function() {
+      var that = this;
+      $section5 = $('.section5');
+      if ($section5.hasClass('third')) {
+        $('li.active').removeClass('active');
+        $('.company-two').addClass('active');
+        $('.company.active').hide().removeClass('active');
+        $('.company:eq(1)').fadeIn().addClass('active');
+        $section5.removeClass('third').addClass('second');
+      } else if ($section5.hasClass('second')) {
+        $('li.active').removeClass('active');
+        $('.company-one').addClass('active');
+        $('.company.active').hide().removeClass('active');
+        $('.company:eq(0)').fadeIn().addClass('active');
+        $section5.removeClass('second').addClass('first');
+      }
     },
 
     getCurrentPanel: function() {
@@ -108,17 +174,78 @@ module.exports = Backbone.View.extend({
         },
         offset: 100
       });
-      var waypoint4 = new Waypoint({
+      var waypoint4down = new Waypoint({
         element: $('.section4'),
         handler: function(direction) {
           if (direction === 'down') {
             $('.section4').addClass('currentPanel');
             $('.section3').removeClass('currentPanel');
-          } else {
-            $('.section4').addClass('currentPanel');
           }
         },
         offset: 200
+      });
+      var waypoint4up = new Waypoint({
+        element: $('.section4'),
+        handler: function(direction) {
+          if (direction === 'up') {
+            $('.section4').addClass('currentPanel');
+            $('.section5').removeClass('currentPanel');
+          }
+        },
+        offset: 100
+      });
+      var waypoint5down = new Waypoint({
+        element: $('.section5'),
+        handler: function(direction) {
+          if (direction === 'down') {
+            $('.section5').addClass('currentPanel');
+            $('.section4').removeClass('currentPanel');
+          }
+        },
+        offset: 200
+      });
+      var waypoint5up = new Waypoint({
+        element: $('.section5'),
+        handler: function(direction) {
+          if (direction === 'up') {
+            $('.section5').addClass('currentPanel');
+            $('.section6').removeClass('currentPanel');
+          }
+        },
+        offset: 100
+      });
+      var waypoint6down = new Waypoint({
+        element: $('.section6'),
+        handler: function(direction) {
+          if (direction === 'down') {
+            $('.section6').addClass('currentPanel');
+            $('.section5').removeClass('currentPanel');
+          }
+        },
+        offset: 200
+      });
+      var waypoint6up = new Waypoint({
+        element: $('.section6'),
+        handler: function(direction) {
+          if (direction === 'up') {
+            $('.section6').addClass('currentPanel');
+          }
+        },
+        offset: 100
+      });
+    },
+
+    companiesActivate: function() {
+      $('.companies li').each(function(){
+        $(this).on('click', function(){
+          var index = $(this).index();
+          if (!($(this).hasClass('active'))) {
+            $('li.active').removeClass('active');
+            $(this).addClass('active');
+            $('.company.active').hide().removeClass('active');
+            $('.company:eq('+index+')').fadeIn().addClass('active');
+          }
+        });
       });
     }
 
