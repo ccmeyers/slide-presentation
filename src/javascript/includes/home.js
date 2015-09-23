@@ -18,7 +18,7 @@ module.exports = Backbone.View.extend({
     initialize: function() {
         this.getCurrentPanel();
         this.slider();
-        this.companiesActivate();
+        this.clickToActivateFragment();
     },
 
     slider: function(e) {
@@ -27,25 +27,17 @@ module.exports = Backbone.View.extend({
         var $currentPanel = $('.currentPanel');
         if (e.keyCode === 40 || e.keyCode === 32 || e.keyCode === 13  || e.keyCode === 34) {
           e.preventDefault();
-          if ( !($currentPanel.hasClass('fragmented')) ) {
+          if ( !($currentPanel.hasClass('fragmented')) || $currentPanel.hasClass('last-fragment') ) {
             that.findNext();
           } else {
-            if ($currentPanel.hasClass('last-fragment')) {
-              that.findNext();
-            } else {
-              that.fragmentedPanelDown();
-            }
+            that.fragmentedPanelDown();
           }
         } else if (e.keyCode === 38 || e.keyCode === 33) {
           e.preventDefault();
-          if ( !($currentPanel.hasClass('fragmented')) ) {
+          if ( !($currentPanel.hasClass('fragmented')) || $currentPanel.hasClass('first-fragment') ) {
             that.findPrev();
           } else {
-            if ($currentPanel.hasClass('first-fragment')) {
-              that.findPrev();
-            } else {
-              that.fragmentedPanelUp();
-            }
+            that.fragmentedPanelUp();
           }
         }
       });
@@ -53,7 +45,7 @@ module.exports = Backbone.View.extend({
 
     scrollToElement: function(panel) {
       $('html, body').animate({
-        scrollTop: panel.offset().top - 103
+        scrollTop: panel.offset().top - 102
       }, 200);
     },
 
@@ -82,9 +74,9 @@ module.exports = Backbone.View.extend({
       currentFragmentedParts.each(function(){
         var fragmentIndex = $(this).index();
         var nextFragment = fragmentIndex + 1;
-        var checkLast = fragmentIndex + 2;
+        var checkForLast = fragmentIndex + 2;
         if ($('.fragmented-part.part'+nextFragment).length > 0) {
-          if ($('.fragmented-part.part'+checkLast).length > 0) {
+          if ($('.fragmented-part.part'+checkForLast).length > 0) {
             currentFragmentedParts.removeClass('active');
             $('.fragmented-part.part'+nextFragment).addClass('active');
             currentFragmentedPanel.removeClass('first-fragment');
@@ -106,9 +98,9 @@ module.exports = Backbone.View.extend({
       currentFragmentedParts.each(function(){
         var fragmentIndex = $(this).index();
         var prevFragment = fragmentIndex - 1;
-        var checkFirst = fragmentIndex - 2;
+        var checkForFirst = fragmentIndex - 2;
         if (prevFragment >= 0) {
-          if (checkFirst >= 0) {
+          if (checkForFirst >= 0) {
             currentFragmentedParts.removeClass('active');
             $('.fragmented-part.part'+prevFragment).addClass('active');
             currentFragmentedPanel.removeClass('first-fragment');
@@ -155,15 +147,13 @@ module.exports = Backbone.View.extend({
       });
     },
 
-    companiesActivate: function() {
-      $('.companies li').each(function(){
+    clickToActivateFragment: function() {
+      $('.fragmented .fragmented-part').each(function(){
         $(this).on('click', function(){
           var index = $(this).index();
           if (!($(this).hasClass('active'))) {
-            $('li.active').removeClass('active');
-            $(this).addClass('active');
-            $('.company.active').hide().removeClass('active');
-            $('.company:eq('+index+')').fadeIn().addClass('active');
+            $('.fragmented-part.active').removeClass('active');
+            $('.fragmented-part.part'+index).addClass('active');
           }
         });
       });
