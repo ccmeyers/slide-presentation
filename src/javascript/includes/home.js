@@ -25,7 +25,7 @@ module.exports = Backbone.View.extend({
       var that = this;
       $(document).on('keydown', function(e){
         var $currentPanel = $('.currentPanel');
-        if (e.keyCode === 40 || e.keyCode === 32 || e.keyCode === 13) {
+        if (e.keyCode === 40 || e.keyCode === 32 || e.keyCode === 13  || e.keyCode === 34) {
           e.preventDefault();
           if ( !($currentPanel.hasClass('section5')) ) {
             that.findNext();
@@ -36,7 +36,7 @@ module.exports = Backbone.View.extend({
               that.findNext();
             }
           }
-        } else if (e.keyCode === 38) {
+        } else if (e.keyCode === 38 || e.keyCode === 33) {
           e.preventDefault();
           if ( !($currentPanel.hasClass('section5')) ) {
             that.findPrev();
