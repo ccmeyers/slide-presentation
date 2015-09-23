@@ -27,24 +27,24 @@ module.exports = Backbone.View.extend({
         var $currentPanel = $('.currentPanel');
         if (e.keyCode === 40 || e.keyCode === 32 || e.keyCode === 13  || e.keyCode === 34) {
           e.preventDefault();
-          if ( !($currentPanel.hasClass('section5')) ) {
+          if ( !($currentPanel.hasClass('fragmented')) ) {
             that.findNext();
           } else {
-            if ($currentPanel.hasClass('first') || $currentPanel.hasClass('second')) {
-              that.fragmentedPanelDown();
-            } else {
+            if ($currentPanel.hasClass('last-fragment')) {
               that.findNext();
+            } else {
+              that.fragmentedPanelDown();
             }
           }
         } else if (e.keyCode === 38 || e.keyCode === 33) {
           e.preventDefault();
-          if ( !($currentPanel.hasClass('section5')) ) {
+          if ( !($currentPanel.hasClass('fragmented')) ) {
             that.findPrev();
           } else {
-            if ($currentPanel.hasClass('second') || $currentPanel.hasClass('third')) {
-              that.fragmentedPanelUp();
-            } else {
+            if ($currentPanel.hasClass('first-fragment')) {
               that.findPrev();
+            } else {
+              that.fragmentedPanelUp();
             }
           }
         }
@@ -77,161 +77,81 @@ module.exports = Backbone.View.extend({
 
     fragmentedPanelDown: function() {
       var that = this;
-      $section5 = $('.section5');
-      if ($section5.hasClass('first')) {
-        $('li.active').removeClass('active');
-        $('.company-two').addClass('active');
-        $('.company.active').hide().removeClass('active');
-        $('.company:eq(1)').fadeIn().addClass('active');
-        $section5.removeClass('first').addClass('second');
-      } else if ($section5.hasClass('second')) {
-        $('li.active').removeClass('active');
-        $('.company-three').addClass('active');
-        $('.company.active').hide().removeClass('active');
-        $('.company:eq(2)').fadeIn().addClass('active');
-        $section5.removeClass('second').addClass('third');
-      }
+      var currentFragmentedPanel = $('.currentPanel.fragmented');
+      var currentFragmentedParts = currentFragmentedPanel.find('.fragmented-part.active');
+      currentFragmentedParts.each(function(){
+        var fragmentIndex = $(this).index();
+        var nextFragment = fragmentIndex + 1;
+        var checkLast = fragmentIndex + 2;
+        if ($('.fragmented-part.part'+nextFragment).length > 0) {
+          if ($('.fragmented-part.part'+checkLast).length > 0) {
+            currentFragmentedParts.removeClass('active');
+            $('.fragmented-part.part'+nextFragment).addClass('active');
+            currentFragmentedPanel.removeClass('first-fragment');
+            currentFragmentedPanel.removeClass('last-fragment');
+          } else {
+            currentFragmentedParts.removeClass('active');
+            $('.fragmented-part.part'+nextFragment).addClass('active');
+            currentFragmentedPanel.removeClass('first-fragment');
+            currentFragmentedPanel.addClass('last-fragment');
+          }
+        }
+      });
     },
 
     fragmentedPanelUp: function() {
       var that = this;
-      $section5 = $('.section5');
-      if ($section5.hasClass('third')) {
-        $('li.active').removeClass('active');
-        $('.company-two').addClass('active');
-        $('.company.active').hide().removeClass('active');
-        $('.company:eq(1)').fadeIn().addClass('active');
-        $section5.removeClass('third').addClass('second');
-      } else if ($section5.hasClass('second')) {
-        $('li.active').removeClass('active');
-        $('.company-one').addClass('active');
-        $('.company.active').hide().removeClass('active');
-        $('.company:eq(0)').fadeIn().addClass('active');
-        $section5.removeClass('second').addClass('first');
-      }
+      var currentFragmentedPanel = $('.currentPanel.fragmented');
+      var currentFragmentedParts = currentFragmentedPanel.find('.fragmented-part.active');
+      currentFragmentedParts.each(function(){
+        var fragmentIndex = $(this).index();
+        var prevFragment = fragmentIndex - 1;
+        var checkFirst = fragmentIndex - 2;
+        if (prevFragment >= 0) {
+          if (checkFirst >= 0) {
+            currentFragmentedParts.removeClass('active');
+            $('.fragmented-part.part'+prevFragment).addClass('active');
+            currentFragmentedPanel.removeClass('first-fragment');
+            currentFragmentedPanel.removeClass('last-fragment');
+          } else {
+            currentFragmentedParts.removeClass('active');
+            $('.fragmented-part.part'+prevFragment).addClass('active');
+            currentFragmentedPanel.removeClass('last-fragment');
+            currentFragmentedPanel.addClass('first-fragment');
+          }
+        }
+      });
     },
 
     getCurrentPanel: function() {
-      var waypoint1down = new Waypoint({
-        element: $('.section1'),
-        handler: function(direction) {
-          if (direction === 'down') {
-            $('.section1').addClass('currentPanel');
-          } else {
-            $('.section1').addClass('currentPanel');
-            $('.section2').removeClass('currentPanel');
-          }
-        },
-        offset: 200
-      });
-      var waypoint1up = new Waypoint({
-        element: $('.section1'),
-        handler: function(direction) {
-          if (direction === 'up') {
-            $('.section1').addClass('currentPanel');
-            $('.section2').removeClass('currentPanel');
-          }
-        },
-        offset: 100
-      });
-      var waypoint2down = new Waypoint({
-        element: $('.section2'),
-        handler: function(direction) {
-          if (direction === 'down') {
-            $('.section2').addClass('currentPanel');
-            $('.section1').removeClass('currentPanel');
-          }
-        },
-        offset: 200
-      });
-      var waypoint2up = new Waypoint({
-        element: $('.section2'),
-        handler: function(direction) {
-          if (direction === 'up') {
-            $('.section2').addClass('currentPanel');
-            $('.section3').removeClass('currentPanel');
-          }
-        },
-        offset: 100
-      });
-      var waypoint3down = new Waypoint({
-        element: $('.section3'),
-        handler: function(direction) {
-          if (direction === 'down') {
-            $('.section3').addClass('currentPanel');
-            $('.section2').removeClass('currentPanel');
-          }
-        },
-        offset: 200
-      });
-      var waypoint3up = new Waypoint({
-        element: $('.section3'),
-        handler: function(direction) {
-          if (direction === 'up') {
-            $('.section3').addClass('currentPanel');
-            $('.section4').removeClass('currentPanel');
-          }
-        },
-        offset: 100
-      });
-      var waypoint4down = new Waypoint({
-        element: $('.section4'),
-        handler: function(direction) {
-          if (direction === 'down') {
-            $('.section4').addClass('currentPanel');
-            $('.section3').removeClass('currentPanel');
-          }
-        },
-        offset: 200
-      });
-      var waypoint4up = new Waypoint({
-        element: $('.section4'),
-        handler: function(direction) {
-          if (direction === 'up') {
-            $('.section4').addClass('currentPanel');
-            $('.section5').removeClass('currentPanel');
-          }
-        },
-        offset: 100
-      });
-      var waypoint5down = new Waypoint({
-        element: $('.section5'),
-        handler: function(direction) {
-          if (direction === 'down') {
-            $('.section5').addClass('currentPanel');
-            $('.section4').removeClass('currentPanel');
-          }
-        },
-        offset: 200
-      });
-      var waypoint5up = new Waypoint({
-        element: $('.section5'),
-        handler: function(direction) {
-          if (direction === 'up') {
-            $('.section5').addClass('currentPanel');
-            $('.section6').removeClass('currentPanel');
-          }
-        },
-        offset: 100
-      });
-      var waypoint6down = new Waypoint({
-        element: $('.section6'),
-        handler: function(direction) {
-          if (direction === 'down') {
-            $('.section6').addClass('currentPanel');
-            $('.section5').removeClass('currentPanel');
-          }
-        },
-        offset: 200
-      });
-      var waypoint6up = new Waypoint({
-        element: $('.section6'),
-        handler: function(direction) {
-          if (direction === 'up') {
-            $('.section6').addClass('currentPanel');
-          }
-        },
-        offset: 100
+      $('section').each(function(){
+        var index = $(this).index();
+        var nextIndex = index + 1;
+        var prevIndex = index - 1;
+        var waypointsDown = new Waypoint({
+          element: $('.section'+index),
+          handler: function(direction) {
+            if (direction === 'down') {
+              $('.section'+index).addClass('currentPanel');
+              if (prevIndex > 0) {
+                $('.section'+prevIndex).removeClass('currentPanel');
+              }
+            }
+          },
+          offset: 200
+        });
+        var waypointsUp = new Waypoint({
+          element: $('.section'+index),
+          handler: function(direction) {
+            if (direction === 'up') {
+              $('.section'+index).addClass('currentPanel');
+              if ($('.section'+index).length > 0) {
+                $('.section'+nextIndex).removeClass('currentPanel');
+              }
+            }
+          },
+          offset: 100
+        });
       });
     },
 

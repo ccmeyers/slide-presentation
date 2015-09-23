@@ -28,7 +28,7 @@
         background-repeat: no-repeat;
         cursor: pointer;
 
-        &.company-one {
+        &:nth-child(1) {
           background-image: url(../images/etsy.png);
           @include transition(background-image 0.25s ease-in-out);
 
@@ -38,7 +38,7 @@
           }
         }
 
-        &.company-two {
+        &:nth-child(2) {
           background-image: url(../images/warby-parker.png);
           @include transition(background-image 0.25s ease-in-out);
 
@@ -48,7 +48,7 @@
           }
         }
 
-        &.company-three {
+        &:nth-child(3) {
           background-image: url(../images/honest-co.png);
           @include transition(background-image 0.25s ease-in-out);
 
