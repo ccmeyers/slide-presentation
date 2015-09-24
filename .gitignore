@@ -1,5 +1,4 @@
 .DS_Store
 .sass-cache
-dist
 src/javascript/vendor
 node_modules

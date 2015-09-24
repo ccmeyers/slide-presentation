@@ -1,0 +1,347 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
+/* Neat 1.7.0
+ * http://neat.bourbon.io
+ * Copyright 2012-2014 thoughtbot, inc.
+ * MIT License */
+/* line 2, /Users/Cmeyers/ra/slide-presentation/node_modules/node-neat/assets/stylesheets/grid/_box-sizing.scss */
+html {
+  box-sizing: border-box; }
+
+/* line 7, /Users/Cmeyers/ra/slide-presentation/node_modules/node-neat/assets/stylesheets/grid/_box-sizing.scss */
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 18, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/_reset.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+/* line 28, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/_reset.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* line 31, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/_reset.scss */
+body {
+  line-height: 1; }
+
+/* line 34, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/_reset.scss */
+ol, ul {
+  list-style: none; }
+
+/* line 37, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/_reset.scss */
+blockquote, q {
+  quotes: none; }
+
+/* line 41, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/_reset.scss */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+/* line 45, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* line 1, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/_base.scss */
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; }
+  /* line 4, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/_base.scss */
+  body .row {
+    display: block; }
+    /* line 15, /Users/Cmeyers/ra/slide-presentation/node_modules/node-bourbon/assets/stylesheets/addons/_clearfix.scss */
+    body .row:after {
+      content: "";
+      display: table;
+      clear: both; }
+  /* line 8, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/_base.scss */
+  body .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+  /* line 15, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/_base.scss */
+  body .view-height {
+    height: calc(100vh - 102px); }
+
+/* line 1, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/nav.scss */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 103px;
+  background-color: #231f20;
+  padding: 25px 0;
+  z-index: 100; }
+  /* line 11, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/nav.scss */
+  header .navigation {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto; }
+    /* line 15, /Users/Cmeyers/ra/slide-presentation/node_modules/node-bourbon/assets/stylesheets/addons/_clearfix.scss */
+    header .navigation:after {
+      content: "";
+      display: table;
+      clear: both; }
+    /* line 16, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/nav.scss */
+    header .navigation .links a {
+      color: white;
+      text-decoration: none; }
+    /* line 21, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/nav.scss */
+    header .navigation .links .link {
+      display: inline-block;
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-weight: 400; }
+      /* line 25, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/nav.scss */
+      header .navigation .links .link.github {
+        font-size: 40px;
+        margin-top: 6px; }
+      /* line 30, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/nav.scss */
+      header .navigation .links .link.my-site {
+        float: right;
+        font-size: 25px;
+        margin-top: 17px; }
+
+/* line 1, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section1.scss */
+.section1 {
+  position: relative;
+  margin-top: 103px;
+  background-color: #231f20;
+  color: #00e1ff; }
+  /* line 7, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section1.scss */
+  .section1 .header-wrapper {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: 75%; }
+    /* line 14, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section1.scss */
+    .section1 .header-wrapper h1 {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 1.1; }
+    /* line 20, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section1.scss */
+    .section1 .header-wrapper h2 {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 25px;
+      line-height: 1.2;
+      margin: 10px 0; }
+
+/* line 1, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section2.scss */
+.section2 {
+  position: relative;
+  background-color: #ececec;
+  color: #808083; }
+  /* line 6, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section2.scss */
+  .section2 .content {
+    width: 75%; }
+    /* line 9, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section2.scss */
+    .section2 .content h1 {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 50px;
+      margin-bottom: 50px; }
+
+/* line 3, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section3.scss */
+.section3 .left {
+  position: relative;
+  float: left;
+  display: block;
+  width: 51.17883%;
+  background-color: #231f20;
+  color: #ececec; }
+  /* line 77, /Users/Cmeyers/ra/slide-presentation/node_modules/node-neat/assets/stylesheets/grid/_span-columns.scss */
+  .section3 .left:last-child {
+    width: 48.82117%; }
+  /* line 9, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section3.scss */
+  .section3 .left .content {
+    width: 80%;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 1.2; }
+    /* line 15, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section3.scss */
+    .section3 .left .content p {
+      margin-bottom: 15px; }
+/* line 21, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section3.scss */
+.section3 .right {
+  position: relative;
+  float: left;
+  display: block;
+  width: 51.17883%;
+  padding: 0 5%; }
+  /* line 77, /Users/Cmeyers/ra/slide-presentation/node_modules/node-neat/assets/stylesheets/grid/_span-columns.scss */
+  .section3 .right:last-child {
+    width: 48.82117%; }
+  /* line 26, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section3.scss */
+  .section3 .right .header {
+    padding-top: 24%; }
+    /* line 29, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section3.scss */
+    .section3 .right .header .fragmented-part {
+      display: inline-block;
+      height: 102px;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      background-color: #808083;
+      color: white;
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 50px;
+      padding-top: 26.5px;
+      text-align: center;
+      transition: background-color 0.25s ease-in-out; }
+      /* line 85, /Users/Cmeyers/ra/slide-presentation/node_modules/node-neat/assets/stylesheets/grid/_span-columns.scss */
+      .section3 .right .header .fragmented-part:last-child {
+        margin-right: 0; }
+      /* line 45, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section3.scss */
+      .section3 .right .header .fragmented-part:hover, .section3 .right .header .fragmented-part.active {
+        background-color: #00e1ff; }
+  /* line 52, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section3.scss */
+  .section3 .right .content {
+    width: 80%;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 600;
+    color: #808083; }
+    @media screen and (max-height: 625px) {
+      .section3 .right .content {
+        padding-top: 20%; } }
+    /* line 61, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section3.scss */
+    .section3 .right .content .fragmented-part {
+      display: none; }
+      /* line 64, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section3.scss */
+      .section3 .right .content .fragmented-part.active {
+        display: block; }
+      /* line 68, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section3.scss */
+      .section3 .right .content .fragmented-part h3 {
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-weight: 700;
+        font-size: 50px; }
+
+/* line 3, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section4.scss */
+.section4 .left {
+  position: relative;
+  float: left;
+  display: block;
+  width: 51.17883%;
+  padding: 0 5%; }
+  /* line 77, /Users/Cmeyers/ra/slide-presentation/node_modules/node-neat/assets/stylesheets/grid/_span-columns.scss */
+  .section4 .left:last-child {
+    width: 48.82117%; }
+  /* line 8, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section4.scss */
+  .section4 .left .header {
+    padding-top: 24%; }
+    /* line 11, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section4.scss */
+    .section4 .left .header .fragmented-part {
+      display: inline-block;
+      height: 102px;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 23.23176%;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      background-color: #808083;
+      color: white;
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 50px;
+      padding-top: 26.5px;
+      text-align: center;
+      transition: background-color 0.25s ease-in-out; }
+      /* line 85, /Users/Cmeyers/ra/slide-presentation/node_modules/node-neat/assets/stylesheets/grid/_span-columns.scss */
+      .section4 .left .header .fragmented-part:last-child {
+        margin-right: 0; }
+      /* line 27, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section4.scss */
+      .section4 .left .header .fragmented-part:hover, .section4 .left .header .fragmented-part.active {
+        background-color: #00e1ff; }
+  /* line 34, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section4.scss */
+  .section4 .left .content {
+    width: 80%;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 600;
+    color: #808083; }
+    @media screen and (max-height: 625px) {
+      .section4 .left .content {
+        padding-top: 20%; } }
+    /* line 43, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section4.scss */
+    .section4 .left .content .fragmented-part {
+      display: none; }
+      /* line 46, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section4.scss */
+      .section4 .left .content .fragmented-part.active {
+        display: block; }
+      /* line 50, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section4.scss */
+      .section4 .left .content .fragmented-part h3 {
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-weight: 700;
+        font-size: 50px; }
+/* line 58, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section4.scss */
+.section4 .right {
+  position: relative;
+  float: left;
+  display: block;
+  width: 51.17883%;
+  background-color: #231f20;
+  color: #ececec; }
+  /* line 77, /Users/Cmeyers/ra/slide-presentation/node_modules/node-neat/assets/stylesheets/grid/_span-columns.scss */
+  .section4 .right:last-child {
+    width: 48.82117%; }
+  /* line 64, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section4.scss */
+  .section4 .right .content {
+    width: 80%;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.2; }
+    /* line 70, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section4.scss */
+    .section4 .right .content p {
+      margin-bottom: 15px; }
+
+/* line 1, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section5.scss */
+.section5 {
+  position: relative;
+  background-color: #231f20;
+  color: #00e1ff;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 700;
+  text-align: center; }
+  /* line 8, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section5.scss */
+  .section5 .content {
+    width: 60%; }
+    /* line 11, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section5.scss */
+    .section5 .content h1 {
+      font-size: 50px;
+      margin-bottom: 10px; }
+    /* line 16, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section5.scss */
+    .section5 .content h2 {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      margin-top: 30px;
+      line-height: 1.1; }
+      /* line 22, /Users/Cmeyers/ra/slide-presentation/src/sass/includes/section5.scss */
+      .section5 .content h2 a {
+        color: #ececec;
+        text-decoration: none; }
