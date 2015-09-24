@@ -2,7 +2,6 @@
   "name": "Slide-Presentation",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.html",
   "author": "Catherine Meyers",
   "repository": {
     "type": "git",
