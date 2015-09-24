@@ -138,8 +138,8 @@ var slidePresentation = {
       $(this).on('click', function(){
         var index = $(this).index();
         if (!($(this).hasClass('active'))) {
-          $('.fragmented-part.active').removeClass('active');
-          $('.fragmented-part.part'+index).addClass('active');
+          $('.currentPanel .fragmented-part.active').removeClass('active');
+          $('.currentPanel .fragmented-part.part'+index).addClass('active');
         }
       });
     });

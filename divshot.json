@@ -1,0 +1,5 @@
+{
+  "name": "slide-presentation",
+  "root": "./dist",
+  "clean_urls": true
+}
