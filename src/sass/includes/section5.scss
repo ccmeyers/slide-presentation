@@ -1,0 +1,12 @@
+.section5 {
+  position: relative;
+  background-color: $black;
+  color: $blue;
+  @include t-med;
+  font-size: 50px;
+  text-align: center;
+
+  .content {
+    width: 90%;
+  }
+}

@@ -1,10 +1,10 @@
 {
-  "name": "aera",
+  "name": "Slide-Presentation",
   "version": "1.0.0",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git://git.redantler.com/redantler/aera.git"
+    "url": "git://git.redantler.com/redantler/slide-presentation.git"
   },
   "browserify": {
     "transform": [

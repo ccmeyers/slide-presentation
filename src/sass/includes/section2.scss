@@ -1,0 +1,15 @@
+.section2 {
+  position: relative;
+  background-color: $off-white;
+  color: $gray;
+
+  .content {
+    width: 75%;
+
+    h1 {
+      @include t-med;
+      font-size: 50px;
+      margin-bottom: 50px;
+    }
+  }
+}
