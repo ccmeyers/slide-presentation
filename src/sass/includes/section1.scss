@@ -12,13 +12,13 @@
     width: 75%;
 
     h1 {
-      @include t-med;
+      @include font-heavy;
       font-size: 50px;
       line-height: 1.1;
     }
 
     h2 {
-      @include t-med;
+      @include font-med;
       font-size: 25px;
       line-height: 1.2;
       margin: 10px 0;

@@ -2,7 +2,7 @@
   position: relative;
   background-color: $black;
   color: $blue;
-  @include t-med;
+  @include font-heavy;
   text-align: center;
 
   .content {
@@ -14,6 +14,7 @@
     }
 
     h2 {
+      @include font-med;
       font-size: 30px;
       margin-top: 30px;
       line-height: 1.1;

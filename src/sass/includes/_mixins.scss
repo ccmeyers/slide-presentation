@@ -4,28 +4,28 @@
 }
 
 @mixin font-base {
-  font-family: 'Theinhardt-Reg', Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   @include font-smoothing;
 }
 
-@mixin t-reg {
-  font-family: 'Theinhardt-Reg', Arial, sans-serif;
+@mixin font-reg {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 400;
 }
 
-@mixin t-med {
-  font-family: 'Theinhardt-Med', Arial, sans-serif;
+@mixin font-med {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 600;
 }
 
-@mixin t-heavy {
-  font-family: 'Theinhardt-Heavy', Arial, sans-serif;
+@mixin font-heavy {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 700;
 }
 
-@mixin t-bold {
-  font-family: 'Theinhardt-Bold', Arial, sans-serif;
-}
-
-@mixin t-black {
-  font-family: 'Theinhardt-Black', Arial, sans-serif;
+@mixin font-bold {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 800;
 }

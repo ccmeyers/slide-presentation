@@ -8,8 +8,9 @@
 
     .content {
       width: 80%;
-      @include t-med;
-      font-size: 40px;
+      @include font-reg;
+      font-size: 35px;
+      line-height: 1.2;
 
       p {
         margin-bottom: 15px;
@@ -34,7 +35,7 @@
         cursor: pointer;
         background-color: $gray;
         color: white;
-        @include t-med;
+        @include font-med;
         font-size: 50px;
         padding-top: 26.5px;
         text-align: center;
@@ -50,7 +51,7 @@
 
     .content {
       width: 80%;
-      @include t-med;
+      @include font-med;
       color: $gray;
 
       .fragmented-part {
@@ -61,7 +62,7 @@
         }
 
         h3 {
-          @include t-heavy;
+          @include font-heavy;
           font-size: 50px;
         }
       }

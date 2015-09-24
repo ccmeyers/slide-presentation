@@ -20,7 +20,7 @@ header {
 
       .link {
         display: inline-block;
-        @include t-reg;
+        @include font-reg;
 
         &.github {
           font-size: 40px;
@@ -30,7 +30,7 @@ header {
         &.my-site {
           float: right;
           font-size: 25px;
-          margin-top: 15px;
+          margin-top: 17px;
         }
       }
     }
