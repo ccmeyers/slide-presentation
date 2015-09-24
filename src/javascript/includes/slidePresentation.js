@@ -137,9 +137,20 @@ var slidePresentation = {
     $('.fragmented .fragmented-part').each(function(){
       $(this).on('click', function(){
         var index = $(this).index();
+        var parentSection = $(this).parents('section');
         if (!($(this).hasClass('active'))) {
-          $('.currentPanel .fragmented-part.active').removeClass('active');
-          $('.currentPanel .fragmented-part.part'+index).addClass('active');
+          parentSection.find('.fragmented-part.active').removeClass('active');
+          parentSection.find('.fragmented-part.part'+index).addClass('active');
+          if (parentSection.find('.fragmented-part.part'+index).next().length === 0) {
+            parentSection.removeClass('first-fragment');
+            parentSection.addClass('last-fragment');
+          } else if (parentSection.find('.fragmented-part.part'+index).prev().length === 0) {
+            parentSection.removeClass('last-fragment');
+            parentSection.addClass('first-fragment');
+          } else {
+            parentSection.removeClass('first-fragment');
+            parentSection.removeClass('last-fragment');
+          }
         }
       });
     });
