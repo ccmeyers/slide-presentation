@@ -1,9 +1,8 @@
 .section3 {
-  padding-right: 2.35765%;
 
   .left {
     position: relative;
-    @include span-columns(6);
+    @include span-columns(6, 'block-collapse');
     background-color: $black;
     color: $off-white;
 
@@ -20,12 +19,13 @@
 
   .right {
     position: relative;
-    @include span-columns(6);
+    @include span-columns(6, 'block-collapse');
+    padding: 0 5%;
 
     .header {
       padding-top: 24%;
 
-      li {
+      .fragmented-part {
         display: inline-block;
         height: 102px;
         @include span-columns(4);
@@ -53,29 +53,16 @@
       @include t-med;
       color: $gray;
 
-      .company {
+      .fragmented-part {
         display: none;
 
         &.active {
           display: block;
         }
 
-        .name {
+        h3 {
           @include t-heavy;
           font-size: 50px;
-        }
-
-        .mission {
-          font-size: 30px;
-          margin: 20px 0;
-
-          span {
-            @include t-heavy;
-          }
-        }
-
-        .money {
-          font-size: 30px;
         }
       }
     }
