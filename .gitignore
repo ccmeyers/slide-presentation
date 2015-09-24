@@ -1,4 +1,5 @@
 .DS_Store
 .sass-cache
+.divshot-cache
 src/javascript/vendor
 node_modules
