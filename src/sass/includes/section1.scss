@@ -24,4 +24,25 @@
       margin: 10px 0;
     }
   }
+
+  .key-down {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    @include font-heavy;
+    color: $off-white;
+
+    .arrow-down {
+      display: inline-block;
+      width: 80px;
+      height: 20px;
+      background-image: url(../images/arrow-down.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      vertical-align: middle;
+    }
+  }
 }

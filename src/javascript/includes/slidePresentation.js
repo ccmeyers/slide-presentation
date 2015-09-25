@@ -18,7 +18,11 @@ var slidePresentation = {
       if (e.keyCode === 40 || e.keyCode === 32 || e.keyCode === 13  || e.keyCode === 34) {
         e.preventDefault();
         if ( !($currentPanel.hasClass('fragmented')) || $currentPanel.hasClass('last-fragment') ) {
-          that.findNext();
+          if ( !($currentPanel.hasClass('add-fragmented')) || $currentPanel.hasClass('last-fragment') ) {
+            that.findNext();
+          } else {
+            that.addFragment();
+          }
         } else {
           movement = 'down';
           that.fragmentedPanel(movement);
@@ -44,7 +48,7 @@ var slidePresentation = {
   findNext: function() {
     var that = this;
     var $currentPanel = $('.currentPanel');
-    var nextPanel = $currentPanel.nextAll('section');
+    var nextPanel = $currentPanel.next('section');
     if (nextPanel.length > 0) {
       that.scrollToElement(nextPanel);
     }
@@ -53,7 +57,7 @@ var slidePresentation = {
   findPrev: function() {
     var that = this;
     var $currentPanel = $('.currentPanel');
-    var prevPanel = $currentPanel.prevAll('section');
+    var prevPanel = $currentPanel.prev('section');
     if (prevPanel.length > 0) {
       that.scrollToElement(prevPanel);
     }
@@ -65,20 +69,20 @@ var slidePresentation = {
     var currentFragmentedParts = currentFragmentedPanel.find('.fragmented-part.active');
     currentFragmentedParts.each(function(){
       var fragmentIndex = $(this).index();
-      var nextFragment = fragmentIndex + 1;
+      var nextFragment = $('.currentPanel .fragmented-part.part'+fragmentIndex).next();
       var prevFragment = fragmentIndex - 1;
-      var checkForLast = fragmentIndex + 2;
+      var checkForLast = nextFragment.next();
       var checkForFirst = fragmentIndex - 2;
       if (movement === 'down') {
-        if ($('.currentPanel .fragmented-part.part'+nextFragment).length > 0) {
-          if ($('.currentPanel .fragmented-part.part'+checkForLast).length > 0) {
+        if (nextFragment.length > 0) {
+          if (checkForLast.length > 0) {
             currentFragmentedParts.removeClass('active');
-            $('.currentPanel .fragmented-part.part'+nextFragment).addClass('active');
+            nextFragment.addClass('active');
             currentFragmentedPanel.removeClass('first-fragment');
             currentFragmentedPanel.removeClass('last-fragment');
           } else {
             currentFragmentedParts.removeClass('active');
-            $('.currentPanel .fragmented-part.part'+nextFragment).addClass('active');
+            nextFragment.addClass('active');
             currentFragmentedPanel.removeClass('first-fragment');
             currentFragmentedPanel.addClass('last-fragment');
           }
@@ -96,6 +100,26 @@ var slidePresentation = {
             currentFragmentedPanel.removeClass('last-fragment');
             currentFragmentedPanel.addClass('first-fragment');
           }
+        }
+      }
+    });
+  },
+
+  addFragment: function() {
+    var that = this;
+    var currentAddFragmentedPanel = $('.currentPanel.add-fragmented');
+    var currentAddFragmentedParts = currentAddFragmentedPanel.find('.add-fragmented-part.active');
+    currentAddFragmentedParts.each(function(){
+      var addFragmentIndex = $(this).index();
+      var currentAddFragment = $('.currentPanel .add-fragmented-part.part'+addFragmentIndex);
+      var nextAddFragment = currentAddFragment.next();
+      var checkForLastAddFragment = nextAddFragment.next();
+      if (nextAddFragment.length > 0) {
+        if (checkForLastAddFragment.length > 0) {
+          nextAddFragment.addClass('active');
+        } else {
+          nextAddFragment.addClass('active');
+          currentAddFragmentedPanel.addClass('last-fragment');
         }
       }
     });

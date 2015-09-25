@@ -1,7 +1,7 @@
 Slide-Presentation
 ==================
 
-This is a small JavaScript library that simulates a Keynote or PowerPoint presentation. I wrote a [blog post]() about it. Also, you can take a look at the [demo]().
+This is a small JavaScript library that simulates a Keynote or PowerPoint presentation. I wrote a <a href="http://anunexpectedcoder.com/blog/2015/09/23/slide-slide-slippity-slide/" target="_blank">blog post</a> about it. Also, you can take a look at the <a href="http://slide-presentation.divshot.io/" target="_blank">demo here</a>.
 
 
 The build includes the following:

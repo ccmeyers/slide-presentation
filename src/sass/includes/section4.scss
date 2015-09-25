@@ -11,7 +11,7 @@
       .fragmented-part {
         display: inline-block;
         height: 102px;
-        @include span-columns(3);
+        @include span-columns(2);
         background-position: center;
         background-repeat: no-repeat;
         cursor: pointer;
