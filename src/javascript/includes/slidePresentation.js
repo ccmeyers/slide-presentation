@@ -10,30 +10,33 @@ var slidePresentation = {
     this.clickToActivateFragment();
   },
 
+  vars: {
+    activeClass: 'active',
+    fragmentedClass: 'fragmented',
+    firstFragmentClass: 'first-fragment',
+    lastFragmentClass: 'last-fragment',
+    addFragmentClass: 'add-fragmented'
+  },
+
   slider: function(e) {
     var that = this;
-    var movement;
     $(document).on('keydown', function(e){
-      var $currentPanel = $('.currentPanel');
+      var currentPanel = $('.current-panel');
       if (e.keyCode === 40 || e.keyCode === 32 || e.keyCode === 13  || e.keyCode === 34) {
         e.preventDefault();
-        if ( !($currentPanel.hasClass('fragmented')) || $currentPanel.hasClass('last-fragment') ) {
-          if ( !($currentPanel.hasClass('add-fragmented')) || $currentPanel.hasClass('last-fragment') ) {
-            that.findNext();
-          } else {
-            that.addFragment();
-          }
+        if (currentPanel.hasClass(that.vars.fragmentedClass) && !(currentPanel.hasClass(that.vars.lastFragmentClass))) {
+          that.fragmentedPanel('down');
+        } else if (currentPanel.hasClass(that.vars.addFragmentClass) && !(currentPanel.hasClass(that.vars.lastFragmentClass))) {
+          that.addFragment();
         } else {
-          movement = 'down';
-          that.fragmentedPanel(movement);
+          that.findNext();
         }
       } else if (e.keyCode === 38 || e.keyCode === 33) {
         e.preventDefault();
-        if ( !($currentPanel.hasClass('fragmented')) || $currentPanel.hasClass('first-fragment') ) {
-          that.findPrev();
+        if ( currentPanel.hasClass(that.vars.fragmentedClass) && !(currentPanel.hasClass(that.vars.firstFragmentClass)) ) {
+          that.fragmentedPanel('up');
         } else {
-          movement = 'up';
-          that.fragmentedPanel(movement);
+          that.findPrev();
         }
       }
     });
@@ -46,80 +49,74 @@ var slidePresentation = {
   },
 
   findNext: function() {
-    var that = this;
-    var $currentPanel = $('.currentPanel');
-    var nextPanel = $currentPanel.next('section');
+    var that = this,
+        currentPanel = $('.current-panel'),
+        nextPanel = currentPanel.next('section');
     if (nextPanel.length > 0) {
       that.scrollToElement(nextPanel);
     }
   },
 
   findPrev: function() {
-    var that = this;
-    var $currentPanel = $('.currentPanel');
-    var prevPanel = $currentPanel.prev('section');
+    var that = this,
+        currentPanel = $('.current-panel'),
+        prevPanel = currentPanel.prev('section');
     if (prevPanel.length > 0) {
       that.scrollToElement(prevPanel);
     }
   },
 
   fragmentedPanel: function(movement) {
-    var that = this;
-    var currentFragmentedPanel = $('.currentPanel.fragmented');
-    var currentFragmentedParts = currentFragmentedPanel.find('.fragmented-part.active');
+    var that = this,
+        currentFragmentedPanel = $('.current-panel.fragmented'),
+        currentFragmentedParts = currentFragmentedPanel.find('.fragmented-part.active');
     currentFragmentedParts.each(function(){
-      var fragmentIndex = $(this).index();
-      var nextFragment = $('.currentPanel .fragmented-part.part'+fragmentIndex).next();
-      var prevFragment = fragmentIndex - 1;
-      var checkForLast = nextFragment.next();
-      var checkForFirst = fragmentIndex - 2;
-      if (movement === 'down') {
-        if (nextFragment.length > 0) {
-          if (checkForLast.length > 0) {
-            currentFragmentedParts.removeClass('active');
-            nextFragment.addClass('active');
-            currentFragmentedPanel.removeClass('first-fragment');
-            currentFragmentedPanel.removeClass('last-fragment');
-          } else {
-            currentFragmentedParts.removeClass('active');
-            nextFragment.addClass('active');
-            currentFragmentedPanel.removeClass('first-fragment');
-            currentFragmentedPanel.addClass('last-fragment');
-          }
+      var fragmentIndex = $(this).index(),
+          nextFragment = $('.current-panel .fragmented-part.part'+fragmentIndex).next(),
+          prevFragment = $('.current-panel .fragmented-part.part'+fragmentIndex).prev(),
+          checkForLast = nextFragment.next(),
+          checkForFirst = fragmentIndex - 2;
+      if (movement === 'down' && nextFragment.length > 0) {
+        if (checkForLast.length > 0) {
+          currentFragmentedParts.removeClass(that.vars.activeClass);
+          nextFragment.addClass(that.vars.activeClass);
+          currentFragmentedPanel.removeClass(that.vars.firstFragmentClass);
+          currentFragmentedPanel.removeClass(that.vars.lastFragmentClass);
+        } else {
+          currentFragmentedParts.removeClass(that.vars.activeClass);
+          nextFragment.addClass(that.vars.activeClass);
+          currentFragmentedPanel.removeClass(that.vars.firstFragmentClass);
+          currentFragmentedPanel.addClass(that.vars.lastFragmentClass);
         }
-      } else if (movement === 'up') {
-        if (prevFragment >= 0) {
-          if (checkForFirst >= 0) {
-            currentFragmentedParts.removeClass('active');
-            $('.currentPanel .fragmented-part.part'+prevFragment).addClass('active');
-            currentFragmentedPanel.removeClass('first-fragment');
-            currentFragmentedPanel.removeClass('last-fragment');
-          } else {
-            currentFragmentedParts.removeClass('active');
-            $('.currentPanel .fragmented-part.part'+prevFragment).addClass('active');
-            currentFragmentedPanel.removeClass('last-fragment');
-            currentFragmentedPanel.addClass('first-fragment');
-          }
+      } else if (movement === 'up' && prevFragment.length > 0) {
+        if (checkForFirst >= 0) {
+          currentFragmentedParts.removeClass(that.vars.activeClass);
+          prevFragment.addClass(that.vars.activeClass);
+          currentFragmentedPanel.removeClass(that.vars.firstFragmentClass).removeClass(that.vars.lastFragmentClass);
+        } else {
+          currentFragmentedParts.removeClass(that.vars.activeClass);
+          prevFragment.addClass(that.vars.activeClass);
+          currentFragmentedPanel.removeClass(that.vars.lastFragmentClass).addClass(that.vars.firstFragmentClass);
         }
       }
     });
   },
 
   addFragment: function() {
-    var that = this;
-    var currentAddFragmentedPanel = $('.currentPanel.add-fragmented');
-    var currentAddFragmentedParts = currentAddFragmentedPanel.find('.add-fragmented-part.active');
+    var that = this,
+        currentAddFragmentedPanel = $('.current-panel.add-fragmented'),
+        currentAddFragmentedParts = currentAddFragmentedPanel.find('.add-fragmented-part.active');
     currentAddFragmentedParts.each(function(){
-      var addFragmentIndex = $(this).index();
-      var currentAddFragment = $('.currentPanel .add-fragmented-part.part'+addFragmentIndex);
-      var nextAddFragment = currentAddFragment.next();
-      var checkForLastAddFragment = nextAddFragment.next();
+      var addFragmentIndex = $(this).index(),
+          currentAddFragment = $('.current-panel .add-fragmented-part.part'+addFragmentIndex),
+          nextAddFragment = currentAddFragment.next(),
+          checkForLastAddFragment = nextAddFragment.next();
       if (nextAddFragment.length > 0) {
         if (checkForLastAddFragment.length > 0) {
-          nextAddFragment.addClass('active');
+          nextAddFragment.addClass(that.vars.activeClass);
         } else {
-          nextAddFragment.addClass('active');
-          currentAddFragmentedPanel.addClass('last-fragment');
+          nextAddFragment.addClass(that.vars.activeClass);
+          currentAddFragmentedPanel.addClass(that.vars.lastFragmentClass);
         }
       }
     });
@@ -127,28 +124,30 @@ var slidePresentation = {
 
   getCurrentPanel: function() {
     $('section').each(function(){
-      var index = $(this).index();
-      var nextIndex = index + 1;
-      var prevIndex = index - 1;
+      var index = $(this).index(),
+          currentSection = $('.section'+index),
+          nextSection = currentSection.next(),
+          prevSection = currentSection.prev();
+          currentPanelClass = 'current-panel';
       var waypointsDown = new Waypoint({
-        element: $('.section'+index),
+        element: currentSection,
         handler: function(direction) {
           if (direction === 'down') {
-            $('.section'+index).addClass('currentPanel');
-            if (prevIndex > 0) {
-              $('.section'+prevIndex).removeClass('currentPanel');
+            currentSection.addClass(currentPanelClass);
+            if (prevSection.length > 0) {
+              prevSection.removeClass(currentPanelClass);
             }
           }
         },
         offset: 200
       });
       var waypointsUp = new Waypoint({
-        element: $('.section'+index),
+        element: currentSection,
         handler: function(direction) {
           if (direction === 'up') {
-            $('.section'+index).addClass('currentPanel');
-            if ($('.section'+index).length > 0) {
-              $('.section'+nextIndex).removeClass('currentPanel');
+            currentSection.addClass(currentPanelClass);
+            if (currentSection.length > 0) {
+              nextSection.removeClass(currentPanelClass);
             }
           }
         },
@@ -158,22 +157,24 @@ var slidePresentation = {
   },
 
   clickToActivateFragment: function() {
-    $('.fragmented .fragmented-part').each(function(){
+    var fragmentedParts = $('.fragmented .fragmented-part');
+    fragmentedParts.each(function(){
       $(this).on('click', function(){
-        var index = $(this).index();
-        var parentSection = $(this).parents('section');
-        if (!($(this).hasClass('active'))) {
-          parentSection.find('.fragmented-part.active').removeClass('active');
-          parentSection.find('.fragmented-part.part'+index).addClass('active');
-          if (parentSection.find('.fragmented-part.part'+index).next().length === 0) {
-            parentSection.removeClass('first-fragment');
-            parentSection.addClass('last-fragment');
-          } else if (parentSection.find('.fragmented-part.part'+index).prev().length === 0) {
-            parentSection.removeClass('last-fragment');
-            parentSection.addClass('first-fragment');
+        var index = $(this).index(),
+            parentSection = $(this).parents('section'),
+            activeFragmentedParts = parentSection.find('.fragmented-part.active'),
+            currentFragmentedParts = parentSection.find('.fragmented-part.part'+index),
+            isLastFragment = currentFragmentedParts.next().length === 0,
+            isFirstFragment = currentFragmentedParts.prev().length === 0;
+        if (!($(this).hasClass(that.vars.activeClass))) {
+          activeFragmentedParts.removeClass(that.vars.activeClass);
+          currentFragmentedParts.addClass(that.vars.activeClass);
+          if (isLastFragment) {
+            parentSection.removeClass(that.vars.firstFragmentClass).addClass(that.vars.lastFragmentClass);
+          } else if (isFirstFragment) {
+            parentSection.removeClass(that.vars.lastFragmentClass).addClass(that.vars.firstFragmentClass);
           } else {
-            parentSection.removeClass('first-fragment');
-            parentSection.removeClass('last-fragment');
+            parentSection.removeClass(that.vars.firstFragmentClass).removeClass(that.vars.lastFragmentClass);
           }
         }
       });
