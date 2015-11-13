@@ -1,74 +1,28 @@
 .section4 {
+  position: relative;
+  background-color: $off-white;
 
-  .left {
-    position: relative;
-    @include span-columns(6, 'block-collapse');
-    padding: 0 5%;
+  .content {
+    width: 80%;
+    text-align: center;
 
-    .header {
-      padding-top: 24%;
-
-      .fragmented-part {
-        display: inline-block;
-        height: 102px;
-        @include span-columns(2);
-        background-position: center;
-        background-repeat: no-repeat;
-        cursor: pointer;
-        background-color: $gray;
-        color: white;
-        @include font-med;
-        font-size: 50px;
-        padding-top: 26.5px;
-        text-align: center;
-        @include transition(background-color 0.25s ease-in-out);
-
-        &:hover,
-        &.active {
-          background-color: $blue;
-        }
-      }
-
-    }
-
-    .content {
-      width: 80%;
+    .add-fragmented-part {
+      display: inline-block;
       @include font-med;
+      font-size: 50px;
+      line-height: 1.5;
       color: $gray;
+      margin: 0 5px;
+      opacity: 0;
+      @include transition(opacity 0.25s ease-in-out);
 
-      @media screen and (max-height: 625px) {
-        padding-top: 20%;
+      &:last-child {
+        display: block;
+        color: $blue;
       }
 
-      .fragmented-part {
-        display: none;
-
-        &.active {
-          display: block;
-        }
-
-        h3 {
-          @include font-heavy;
-          font-size: 50px;
-        }
-      }
-    }
-  }
-
-  .right {
-    position: relative;
-    @include span-columns(6, 'block-collapse');
-    background-color: $black;
-    color: $off-white;
-
-    .content {
-      width: 80%;
-      @include font-reg;
-      font-size: 40px;
-      line-height: 1.2;
-
-      p {
-        margin-bottom: 15px;
+      &.active {
+        opacity: 1;
       }
     }
   }

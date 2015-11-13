@@ -22,7 +22,7 @@ var slidePresentation = {
     var that = this;
     $(document).on('keydown', function(e){
       var currentPanel = $('.current-panel');
-      if (e.keyCode === 40 || e.keyCode === 32 || e.keyCode === 13  || e.keyCode === 34) {
+      if (e.keyCode === 40 || e.keyCode === 32 || e.keyCode === 13  || e.keyCode === 34 || e.keyCode === 39) {
         e.preventDefault();
         if (currentPanel.hasClass(that.vars.fragmentedClass) && !(currentPanel.hasClass(that.vars.lastFragmentClass))) {
           that.fragmentedPanel('down');
@@ -31,7 +31,7 @@ var slidePresentation = {
         } else {
           that.findNext();
         }
-      } else if (e.keyCode === 38 || e.keyCode === 33) {
+      } else if (e.keyCode === 38 || e.keyCode === 33 || e.keyCode === 37) {
         e.preventDefault();
         if ( currentPanel.hasClass(that.vars.fragmentedClass) && !(currentPanel.hasClass(that.vars.firstFragmentClass)) ) {
           that.fragmentedPanel('up');
@@ -71,7 +71,7 @@ var slidePresentation = {
         currentFragmentedPanel = $('.current-panel.fragmented'),
         currentFragmentedParts = currentFragmentedPanel.find('.fragmented-part.active');
     currentFragmentedParts.each(function(){
-      var fragmentIndex = $(this).index(),
+      var fragmentIndex = $(this).index('.current-panel .fragmented-part'),
           nextFragment = $('.current-panel .fragmented-part.part'+fragmentIndex).next(),
           prevFragment = $('.current-panel .fragmented-part.part'+fragmentIndex).prev(),
           checkForLast = nextFragment.next(),
@@ -124,7 +124,7 @@ var slidePresentation = {
 
   getCurrentPanel: function() {
     $('section').each(function(){
-      var index = $(this).index(),
+      var index = $(this).index('section'),
           currentSection = $('.section'+index),
           nextSection = currentSection.next(),
           prevSection = currentSection.prev();
@@ -157,7 +157,8 @@ var slidePresentation = {
   },
 
   clickToActivateFragment: function() {
-    var fragmentedParts = $('.fragmented .fragmented-part');
+    var that = this,
+        fragmentedParts = $('.fragmented .fragmented-part');
     fragmentedParts.each(function(){
       $(this).on('click', function(){
         var index = $(this).index(),

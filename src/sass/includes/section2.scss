@@ -1,15 +1,75 @@
 .section2 {
-  position: relative;
-  background-color: $off-white;
-  color: $gray;
 
-  .content {
-    width: 75%;
+  .left {
+    position: relative;
+    @include span-columns(6, 'block-collapse');
+    background-color: $black;
+    color: $off-white;
 
-    h1 {
-      @include font-heavy;
-      font-size: 50px;
-      margin-bottom: 50px;
+    .content {
+      width: 80%;
+      @include font-reg;
+      font-size: 35px;
+      line-height: 1.2;
+
+      p {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .right {
+    position: relative;
+    @include span-columns(6, 'block-collapse');
+    padding: 0 5%;
+
+    .header {
+      padding-top: 24%;
+
+      .fragmented-part {
+        display: inline-block;
+        height: 102px;
+        @include span-columns(4);
+        background-position: center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        background-color: $gray;
+        color: white;
+        @include font-med;
+        font-size: 50px;
+        padding-top: 26.5px;
+        text-align: center;
+        @include transition(background-color 0.25s ease-in-out);
+
+        &:hover,
+        &.active {
+          background-color: $blue;
+        }
+      }
+
+    }
+
+    .content {
+      width: 80%;
+      @include font-med;
+      color: $gray;
+
+      @media screen and (max-height: 625px) {
+        margin-top: 50px;
+      }
+
+      .fragmented-part {
+        display: none;
+
+        &.active {
+          display: block;
+        }
+
+        h3 {
+          @include font-heavy;
+          font-size: 50px;
+        }
+      }
     }
   }
 }

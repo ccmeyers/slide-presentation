@@ -1,28 +1,27 @@
 .section5 {
   position: relative;
-  background-color: $off-white;
+  background-color: $black;
+  color: $blue;
+  @include font-heavy;
+  text-align: center;
 
   .content {
-    width: 80%;
-    text-align: center;
+    width: 60%;
 
-    .add-fragmented-part {
-      display: inline-block;
-      @include font-med;
+    h1 {
       font-size: 50px;
-      line-height: 1.5;
-      color: $gray;
-      margin: 0 5px;
-      opacity: 0;
-      @include transition(opacity 0.25s ease-in-out);
+      margin-bottom: 10px;
+    }
 
-      &:last-child {
-        display: block;
-        color: $blue;
-      }
+    h2 {
+      @include font-med;
+      font-size: 30px;
+      margin-top: 30px;
+      line-height: 1.1;
 
-      &.active {
-        opacity: 1;
+      a {
+        color: $off-white;
+        text-decoration: none;
       }
     }
   }

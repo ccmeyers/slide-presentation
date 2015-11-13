@@ -1,0 +1,48 @@
+.section0 {
+  position: relative;
+  margin-top: 103px;
+  background-color: $black;
+  color: $blue;
+
+  .header-wrapper {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+
+    h1 {
+      @include font-heavy;
+      font-size: 50px;
+      line-height: 1.1;
+    }
+
+    h2 {
+      @include font-med;
+      font-size: 25px;
+      line-height: 1.2;
+      margin: 10px 0;
+    }
+  }
+
+  .key-down {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    @include font-heavy;
+    color: $off-white;
+
+    .arrow-down {
+      display: inline-block;
+      width: 80px;
+      height: 20px;
+      background-image: url(../images/arrow-down.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      vertical-align: middle;
+    }
+  }
+}
