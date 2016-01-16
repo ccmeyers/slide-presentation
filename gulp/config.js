@@ -55,7 +55,7 @@ module.exports = {
     },
     html: {
       src: dest + '/*.html',
-      dest: dest
+      dest: '/*.html'
     }
   }
 };

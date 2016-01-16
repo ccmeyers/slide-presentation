@@ -23,6 +23,11 @@ TO use:
 npm install
 ```
 
+### Install bower dependencies
+```
+bower install
+```
+
 
 ### Run gulp
 ```
