@@ -27,4 +27,10 @@ gulp.task('watch', ['watchify', 'livereload'], function(callback)
     {
         gulp.start('images');
     });
+
+
+    watch(config.videos.src, function()
+    {
+        gulp.start('videos');
+    });
 });

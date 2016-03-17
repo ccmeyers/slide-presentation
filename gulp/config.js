@@ -31,6 +31,10 @@ module.exports = {
     src: src + '/images/**',
     dest: dest + '/assets/images'
   },
+  videos: {
+    src: src + '/videos/**',
+    dest: dest + '/assets/videos'
+  },
   html: {
     src: src + '/html/*.html',
     dest: dest

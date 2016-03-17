@@ -1,7 +1,6 @@
 .end {
   position: relative;
-  background-color: $black;
-  color: $blue;
+  color: $black;
   @include font-heavy;
   text-align: center;
 
@@ -20,7 +19,7 @@
       line-height: 1.1;
 
       a {
-        color: $off-white;
+        color: $blue;
         text-decoration: none;
       }
     }

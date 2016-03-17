@@ -474,26 +474,25 @@ header {
 /* line 1, /Users/Cmeyers/ra/slide-presentation/src/sass/sections/_end.scss */
 .end {
   position: relative;
-  background-color: #231f20;
-  color: #00e1ff;
+  color: #231f20;
   font-family: 'Open Sans', Arial, sans-serif;
   font-weight: 700;
   text-align: center; }
-  /* line 8, /Users/Cmeyers/ra/slide-presentation/src/sass/sections/_end.scss */
+  /* line 7, /Users/Cmeyers/ra/slide-presentation/src/sass/sections/_end.scss */
   .end .content {
     width: 60%; }
-    /* line 11, /Users/Cmeyers/ra/slide-presentation/src/sass/sections/_end.scss */
+    /* line 10, /Users/Cmeyers/ra/slide-presentation/src/sass/sections/_end.scss */
     .end .content h1 {
       font-size: 50px;
       margin-bottom: 10px; }
-    /* line 16, /Users/Cmeyers/ra/slide-presentation/src/sass/sections/_end.scss */
+    /* line 15, /Users/Cmeyers/ra/slide-presentation/src/sass/sections/_end.scss */
     .end .content h2 {
       font-family: 'Open Sans', Arial, sans-serif;
       font-weight: 600;
       font-size: 30px;
       margin-top: 30px;
       line-height: 1.1; }
-      /* line 22, /Users/Cmeyers/ra/slide-presentation/src/sass/sections/_end.scss */
+      /* line 21, /Users/Cmeyers/ra/slide-presentation/src/sass/sections/_end.scss */
       .end .content h2 a {
-        color: #ececec;
+        color: #00e1ff;
         text-decoration: none; }

@@ -1,7 +1,9 @@
 $ = require('jquery');
 jQuery = $;
-var waypoint = require('waypoints');
+var waypoint = require('../vendor/waypoints/lib/jquery.waypoints.min.js');
 var vimeo = require('../vendor/froogaloop/froogaloop.min.js');
+
+'use strict';
 
 var slidePresentation = {
 
