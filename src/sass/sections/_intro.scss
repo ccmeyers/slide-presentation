@@ -1,4 +1,4 @@
-.section0 {
+.intro {
   position: relative;
   margin-top: 103px;
   background-color: $black;
@@ -33,16 +33,5 @@
     display: inline-block;
     @include font-heavy;
     color: $off-white;
-
-    .arrow-down {
-      display: inline-block;
-      width: 80px;
-      height: 20px;
-      background-image: url(../images/arrow-down.svg);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      vertical-align: middle;
-    }
   }
 }

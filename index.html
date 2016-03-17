@@ -27,23 +27,23 @@
         </div>
       </header>
 
-      <section class="section0 view-height">
+      <section class="intro view-height">
         <div class="header-wrapper">
           <h1>Hey there</h1>
           <h1>This is a demo of Slide Presentation</h1>
           <h2>It's a small JavaScript library that simulates a simple Keynote or PowerPoint presentation, but you know, on the web</h2>
           <h2>You can use the up/down arrows or page up/down keys to navigate. It will also respond to a presentation clicker</h2>
         </div>
-        <div class="key-down">Press <div class="arrow-down"></div> Key</div>
+        <div class="key-down">Press the Down Key</div>
       </section>
 
-      <section class="section1 view-height">
+      <section class="sub-intro view-height">
         <div class="content centered">
           <h1>You got to the next section. Congrats!</h1>
         </div>
       </section>
 
-      <section class="section2 fragmented first-fragment">
+      <section class="fragment-few fragmented first-fragment">
         <div class="row">
           <div class="left view-height">
             <div class="content centered">
@@ -52,19 +52,19 @@
             </div>
           </div>
           <div class="right view-height">
-            <div class="header row">
-              <li class="fragmented-part part0 active">1</li>
-              <li class="fragmented-part part1">2</li>
-              <li class="fragmented-part part2">3</li>
+            <div class="subnav row">
+              <li class="fragment-subnav active">1</li>
+              <li class="fragment-subnav">2</li>
+              <li class="fragment-subnav">3</li>
             </div>
             <div class="content centered">
-              <div class="fragmented-part part0 active">
+              <div class="fragmented-part active">
                 <h3>This is the first part</h3>
               </div>
-              <div class="fragmented-part part1">
+              <div class="fragmented-part">
                 <h3>This is the second part</h3>
               </div>
-              <div class="fragmented-part part2">
+              <div class="fragmented-part">
                 <h3>And, this is the third part</h3>
               </div>
             </div>
@@ -72,34 +72,34 @@
         </div>
       </section>
 
-      <section class="section3 fragmented first-fragment">
+      <section class="fragment-many fragmented first-fragment">
         <div class="row">
           <div class="left view-height">
-            <div class="header row">
-              <li class="fragmented-part part0 active">1</li>
-              <li class="fragmented-part part1">2</li>
-              <li class="fragmented-part part2">3</li>
-              <li class="fragmented-part part3">4</li>
-              <li class="fragmented-part part4">5</li>
-              <li class="fragmented-part part5">6</li>
+            <div class="subnav row">
+              <li class="fragment-subnav active">1</li>
+              <li class="fragment-subnav">2</li>
+              <li class="fragment-subnav">3</li>
+              <li class="fragment-subnav">4</li>
+              <li class="fragment-subnav">5</li>
+              <li class="fragment-subnav">6</li>
             </div>
             <div class="content centered">
-              <div class="fragmented-part part0 active">
+              <div class="fragmented-part active">
                 <h3>Here's the first part</h3>
               </div>
-              <div class="fragmented-part part1">
+              <div class="fragmented-part">
                 <h3>And the second</h3>
               </div>
-              <div class="fragmented-part part2">
+              <div class="fragmented-part">
                 <h3>And third</h3>
               </div>
-              <div class="fragmented-part part3">
+              <div class="fragmented-part">
                 <h3>And fourth</h3>
               </div>
-              <div class="fragmented-part part4">
+              <div class="fragmented-part">
                 <h3>And fifth</h3>
               </div>
-              <div class="fragmented-part part5">
+              <div class="fragmented-part">
                 <h3>And sixth</h3>
               </div>
             </div>
@@ -112,17 +112,43 @@
         </div>
       </section>
 
-      <section class="section4 view-height add-fragmented">
+      <section class="add-fragment view-height add-fragmented">
         <div class="content centered">
-          <div class="add-fragmented-part part0 active">How about adding</div>
-          <div class="add-fragmented-part part1">sequential</div>
-          <div class="add-fragmented-part part2">parts</div>
-          <div class="add-fragmented-part part3">?</div>
-          <div class="add-fragmented-part part4">You betcha!</div>
+          <div class="add-fragmented-part active">How about adding</div>
+          <div class="add-fragmented-part">sequential</div>
+          <div class="add-fragmented-part">parts</div>
+          <div class="add-fragmented-part">?</div>
+          <div class="add-fragmented-part">You betcha!</div>
         </div>
       </section>
 
-      <section class="section5 view-height">
+      <section class="embedded-video fragmented first-fragment">
+        <div class="row">
+        <div class="left view-height">
+          <div class="content centered">
+            <p>You can also embed a video that will play or pause as you move in or out of the section. Enjoy this cute pug.</p>
+          </div>
+        </div>
+          <div class="right view-height">
+            <div class="fragmented-part active video-img">
+              <div class="video-img-wrapper">
+                <div class="video-img-wrapper-inner">
+                  <div class="play-button">
+                    <img src="/dist/assets/images/play-button.svg" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class=" fragmented-part video">
+              <div class="video-wrapper">
+                <iframe id="video1" src="https://player.vimeo.com/video/68704007?api=1&player_id=video3&byline=0&title=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="end view-height">
         <div class="content centered">
           <h1>That's it. That's the demo.</h1>
           <h1>Hope you liked it.</h1>

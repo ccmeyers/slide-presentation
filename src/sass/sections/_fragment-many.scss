@@ -1,35 +1,17 @@
-.section2 {
+.fragment-many {
 
   .left {
     position: relative;
     @include span-columns(6, 'block-collapse');
-    background-color: $black;
-    color: $off-white;
-
-    .content {
-      width: 80%;
-      @include font-reg;
-      font-size: 35px;
-      line-height: 1.2;
-
-      p {
-        margin-bottom: 15px;
-      }
-    }
-  }
-
-  .right {
-    position: relative;
-    @include span-columns(6, 'block-collapse');
     padding: 0 5%;
 
-    .header {
+    .subnav {
       padding-top: 24%;
 
-      .fragmented-part {
+      .fragment-subnav {
         display: inline-block;
         height: 102px;
-        @include span-columns(4);
+        @include span-columns(2);
         background-position: center;
         background-repeat: no-repeat;
         cursor: pointer;
@@ -69,6 +51,24 @@
           @include font-heavy;
           font-size: 50px;
         }
+      }
+    }
+  }
+
+  .right {
+    position: relative;
+    @include span-columns(6, 'block-collapse');
+    background-color: $black;
+    color: $off-white;
+
+    .content {
+      width: 80%;
+      @include font-reg;
+      font-size: 40px;
+      line-height: 1.2;
+
+      p {
+        margin-bottom: 15px;
       }
     }
   }

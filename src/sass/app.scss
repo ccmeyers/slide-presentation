@@ -6,12 +6,13 @@
 @import "includes/mixins";
 @import "includes/reset";
 @import "includes/variables";
-
 @import "includes/base";
 @import "includes/nav";
-@import "includes/section0";
-@import "includes/section1";
-@import "includes/section2";
-@import "includes/section3";
-@import "includes/section4";
-@import "includes/section5";
+
+@import "sections/intro";
+@import "sections/sub-intro";
+@import "sections/fragment-few";
+@import "sections/fragment-many";
+@import "sections/add-fragment";
+@import "sections/embedded-video";
+@import "sections/end";

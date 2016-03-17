@@ -1,6 +1,10 @@
 body {
   @include font-base;
 
+  section {
+    @include outer-container(100%);
+  }
+
   .row {
     @include row;
   }
